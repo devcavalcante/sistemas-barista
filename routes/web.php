@@ -45,3 +45,13 @@ $router->group(['prefix' => '/estabelecimento'], function () use ($router) {
         $router->get('/{estabelecimentoId}', 'EstabelecimentoController@index');
     });
 });
+
+$router->group(['prefix' => '/nota'], function () use ($router) {
+    $router->get('/estabelecimento/{id}', 'NotaController@index');
+    $router->get('/estabelecimento', 'NotaController@index');
+    $router->get('/estabelecimento/{id}/geral', 'NotaController@notaGeral');
+    $router->group(['middleware' => ['auth:api','checkrole:cliente']], function () use ($router) {
+        $router->post('/', 'NotaController@storeOrUpdate');
+        $router->delete('/{id}', 'NotaController@destroy');
+    });
+});
