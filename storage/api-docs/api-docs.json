@@ -64,6 +64,212 @@
                 }
             }
         },
+        "/estabelecimento": {
+            "get": {
+                "tags": [
+                    "Estabelecimentos"
+                ],
+                "summary": "Lista todos os estabelecimentos",
+                "description": "Lista todas os estabelecimentos cadastrados no sistema",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Estabelecimentos"
+                ],
+                "summary": "Cria um novo estabelecimento",
+                "description": "Cadastra um novo estabelecimento no sistema, apenas administradores podem acessar esta rota",
+                "operationId": "a19fa74d69b99362964b8ef0a8f0b020",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "readOnly": "true"
+                                    },
+                                    "razao_social": {
+                                        "description": "Nome do estabelecimento",
+                                        "type": "string"
+                                    },
+                                    "possui_bilhar": {
+                                        "description": "Se o estabelecimento possui bilhar",
+                                        "type": "boolean"
+                                    },
+                                    "possui_happyHour": {
+                                        "description": "Se o estabelecimento possui happy hour",
+                                        "type": "boolean"
+                                    },
+                                    "paga_cover": {
+                                        "description": "Se o estabelecimento cobra cover",
+                                        "type": "boolean"
+                                    },
+                                    "hora_abertura": {
+                                        "description": "Horario em que o estabelecimento abre",
+                                        "type": "string"
+                                    },
+                                    "hora_fechamento": {
+                                        "description": "Horario em que o estabelecimento fecha",
+                                        "type": "string"
+                                    },
+                                    "possui_delivery": {
+                                        "description": "Se o estabelecimento possui entrega de lanches/bebida",
+                                        "type": "boolean"
+                                    },
+                                    "outras_informacoes": {
+                                        "description": "Outras informações consideradas importantes para p estabelecimento",
+                                        "type": "string"
+                                    },
+                                    "CEP": {
+                                        "description": "CEP do estabelecimento",
+                                        "type": "string"
+                                    },
+                                    "rua": {
+                                        "description": "Rua do estabelecimento",
+                                        "type": "string"
+                                    },
+                                    "bairro": {
+                                        "description": "Bairro do estabelecimentoo",
+                                        "type": "string"
+                                    },
+                                    "cidade": {
+                                        "description": "Cidade do estabelecimento",
+                                        "type": "string"
+                                    },
+                                    "estado": {
+                                        "description": "Estado do estabelecimento",
+                                        "type": "string"
+                                    },
+                                    "celular": {
+                                        "description": "Numero de telefone do estabelecimento",
+                                        "type": "string"
+                                    },
+                                    "numero": {
+                                        "description": "Numero do estabelecimento",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/estabelecimento/{id}": {
+            "get": {
+                "tags": [
+                    "Estabelecimentos"
+                ],
+                "summary": "Lista um estabelecimento em específico",
+                "description": "Lista um estabelecimento em específico, de acordo com o Id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do estabelecimento",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Estabelecimento não encontrado"
+                    },
+                    "200": {
+                        "description": "ok"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Estabelecimentos"
+                ],
+                "summary": "Atualizar o estabelecimento, apenas administradores tem acesso a essa rota",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do estabelecimento",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "possui_bilhar": "false",
+                                    "possui_delivery": "true",
+                                    "outras_informacoes": "nao abre nos domingos"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Atualizado"
+                    },
+                    "500": {
+                        "description": "Error"
+                    },
+                    "404": {
+                        "description": "Estabelecimento não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Estabelecimentos"
+                ],
+                "summary": "Deletar estabelecimento",
+                "description": "Deletar estabelecimento,apenas administradores possuem acesso a essa rota",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do estabelecimento",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Ok"
+                    },
+                    "404": {
+                        "description": "Estabelecimento nao encontrado"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "tags": [
@@ -292,6 +498,10 @@
         {
             "name": "Autenticação",
             "description": "Autenticação do sistema"
+        },
+        {
+            "name": "Estabelecimentos",
+            "description": "CRUD dos registros de estabelecimentos"
         },
         {
             "name": "Users",
