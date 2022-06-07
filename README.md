@@ -14,3 +14,4 @@ Para rodar o projeto na sua máquina, basta ter o docker instalado e rodar os se
 1. docker-compose build
 2. docker-compose up -d
 3. docker exec -it sistemas-barista_web_1 composer install
+4. docker exec -it sistemas-barista_web_1 php artisan passport:install

@@ -16,3 +16,20 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->post('/login', 'AuthController@authenticate');
+$router->post('/logout', 'AuthController@logout');
+
+$router->group(['prefix' => '/users'], function () use ($router) {
+    $router->post('/', 'UserController@store');
+    $router->group(['middleware' => ['auth:api']], function () use ($router) {
+        $router->group(['middleware' => ['checkrole:admin']], function () use ($router) {
+            $router->get('/', 'UserController@list');
+            $router->post('/restore/{id}', 'UserController@restore');
+        });
+        $router->get('/{id}', 'UserController@list');
+        $router->put('/', 'UserController@update');
+        $router->delete('/{id}', 'UserController@destroy');
+        $router->post('/changePassword', 'UserController@changePassword');
+    });
+});

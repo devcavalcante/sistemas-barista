@@ -22,6 +22,8 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 ./.idea
+.idea
 
 /resources/views/vendor
 /public/swagger-ui-assets
+/storage/logs
