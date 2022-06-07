@@ -80,7 +80,8 @@ class NotaController extends Controller
      *               @OA\Property(property="id", type="integer", readOnly="true"),
      *               @OA\Property(property="user_id", type="integer", description="Referência do usuário"),
      *               @OA\Property(property="estabelecimento_id", type="integer", description="Referencia do estabelecimento"),
-     *               @OA\Property(property="nota", type="number", description="Nota do estabelecimento, permitido apenas notas de 0 a 5")
+     *               @OA\Property(property="nota", type="number", description="Nota do estabelecimento, permitido apenas notas de 0 a 5"),
+     *               @OA\Property(property="comment", type="string", description="Comentario sobre o estabelecimento")
      *          )
      *      )
      *   ),

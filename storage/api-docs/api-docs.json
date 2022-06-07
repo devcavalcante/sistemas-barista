@@ -270,6 +270,126 @@
                 }
             }
         },
+        "/nota/estabelecimento": {
+            "get": {
+                "tags": [
+                    "Notas"
+                ],
+                "summary": "Lista as notas do usuário",
+                "description": "Lista todas as notas do usuario cadastrada no sistema",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "nota/estabelecimento/{id}": {
+            "get": {
+                "tags": [
+                    "Notas"
+                ],
+                "summary": "Lista as notas de um estabelecimento em específico",
+                "description": "Lista as notas de um estabelecimento em específico, de acordo com o Id do estabelecimento",
+                "operationId": "372d466ed11e77320589361fb6d5b51a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do estabelecimento",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                }
+            }
+        },
+        "/nota": {
+            "post": {
+                "tags": [
+                    "Notas"
+                ],
+                "summary": "Cria uma nova nota ou atualiza a nota",
+                "description": "Inseri uma nota se o estabelecimento não tiver nenhuma nota inserida pelo usuario, ou atualiza, caso a nota ja exista",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "readOnly": "true"
+                                    },
+                                    "user_id": {
+                                        "description": "Referência do usuário",
+                                        "type": "integer"
+                                    },
+                                    "estabelecimento_id": {
+                                        "description": "Referencia do estabelecimento",
+                                        "type": "integer"
+                                    },
+                                    "nota": {
+                                        "description": "Nota do estabelecimento, permitido apenas notas de 0 a 5",
+                                        "type": "number"
+                                    },
+                                    "comment": {
+                                        "description": "Comentario sobre o estabelecimento",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created/Updated"
+                    },
+                    "404": {
+                        "description": "Estabelecimento não encontrado"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "nota/estabelecimento/{id}/geral": {
+            "get": {
+                "tags": [
+                    "Notas"
+                ],
+                "summary": "Lista a media das notas de um estabelecimento",
+                "description": "Lista a media das notas de um estabelecimento",
+                "operationId": "7c39a12319965dd9e97a2fefb73c4918",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do estabelecimento",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                }
+            }
+        },
         "/users": {
             "get": {
                 "tags": [
@@ -502,6 +622,10 @@
         {
             "name": "Estabelecimentos",
             "description": "CRUD dos registros de estabelecimentos"
+        },
+        {
+            "name": "Notas",
+            "description": "CRU dos estabelecimentos"
         },
         {
             "name": "Users",
