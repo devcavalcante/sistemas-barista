@@ -1,0 +1,25 @@
+parameters:
+  tasks:
+    composer: ~
+    securitychecker: ~
+    phpunit:
+      config_file: ./phpunit.xml
+    phpmd:
+      whitelist_patterns:
+        - app
+      ruleset:
+        - cleancode
+        - codesize
+        - naming
+        - unusedcode
+      triggered_by:
+        - php
+    phpcs:
+      standard:
+        - PSR1
+        - PSR12
+      encoding: 'utf-8'
+      ignore_patterns:
+        - vendor
+        - database
+    phpcpd: ~
