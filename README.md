@@ -15,3 +15,7 @@ Para rodar o projeto na sua máquina, basta ter o docker instalado e rodar os se
 2. docker-compose up -d
 3. docker exec -it sistemas-barista_web_1 composer install
 4. docker exec -it sistemas-barista_web_1 php artisan passport:install
+
+## Gerar documentação com o swagger
+1. docker exec -it sistemas-barista_web_1 php artisan swagger-lume:generate 
+2. acesse no link (http://localhost:8001/api/documentation)

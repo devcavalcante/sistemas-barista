@@ -33,3 +33,15 @@ $router->group(['prefix' => '/users'], function () use ($router) {
         $router->post('/changePassword', 'UserController@changePassword');
     });
 });
+
+$router->group(['prefix' => '/estabelecimento'], function () use ($router) {
+    $router->group(['middleware' => ['auth:api']], function () use ($router) {
+        $router->group(['middleware' => ['checkrole:admin']], function () use ($router) {
+            $router->post('/', 'EstabelecimentoController@store');
+            $router->put('/{id}', 'EstabelecimentoController@update');
+            $router->delete('/{id}', 'EstabelecimentoController@destroy');
+        });
+        $router->get('/', 'EstabelecimentoController@index');
+        $router->get('/{estabelecimentoId}', 'EstabelecimentoController@index');
+    });
+});

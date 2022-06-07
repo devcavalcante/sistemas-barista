@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Models\User;
+use App\Models\Estabelecimento;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class UserRepository extends AbstractRepository
+class EstabelecimentoRepository extends AbstractRepository
 {
     /**
      * @var Model | Builder
@@ -14,9 +14,10 @@ class UserRepository extends AbstractRepository
     protected Builder|Model $model;
 
     /**
-     * @param User $model
+     * EstabelecimentoRepository constructor.
+     * @param Estabelecimento $model
      */
-    public function __construct(User $model)
+    public function __construct(Estabelecimento $model)
     {
         $this->model = $model;
     }

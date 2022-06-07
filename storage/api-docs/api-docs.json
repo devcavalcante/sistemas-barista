@@ -1,0 +1,301 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentação Barista",
+        "description": "Documentação das rotas do sistema",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Fazer login",
+                "description": "Fazer login para acessar o sistema",
+                "operationId": "b3f029a14629aeb7d5a705cff394e48d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "description": "email de login do usuario",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "senha do usuario",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Logado"
+                    },
+                    "500": {
+                        "description": "Error"
+                    },
+                    "422": {
+                        "description": "erro de validaçao"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Autenticação"
+                ],
+                "summary": "Fazer logout",
+                "description": "Fazer logout para sair do sistema",
+                "operationId": "68a6108af04af5e3bc1ea68a6c6f1299",
+                "responses": {
+                    "200": {
+                        "description": "deslogado"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Lista todas os usuários",
+                "description": "Lista todas os usuários do sistema, apenas administradores podem acessar essa rota",
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Atualizar usuário, apenas o proprio usuario pode alterar seu usuario",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "username": "Nickname do usuario",
+                                    "name": "Nome do usuário",
+                                    "email": "email do usuário"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Atualizado"
+                    },
+                    "500": {
+                        "description": "Error"
+                    },
+                    "404": {
+                        "description": "Usuario não encontrado"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Criar novo usuário",
+                "description": "Criar novo usuário",
+                "operationId": "a1fce870c566eb5fc0cf3178ec5d2fed",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "id": {
+                                        "type": "integer",
+                                        "readOnly": "true"
+                                    },
+                                    "role_id": {
+                                        "description": "Referência do tipo de usuário",
+                                        "type": "integer"
+                                    },
+                                    "username": {
+                                        "description": "Nickname do usuário",
+                                        "type": "string"
+                                    },
+                                    "name": {
+                                        "description": "Nome do usuário",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "Email do usuário",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "Senha do usuário",
+                                        "type": "string"
+                                    },
+                                    "idade": {
+                                        "description": "Idade do usuário, usuário deve ser maior de 18 anos",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/users/{userId}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Lista um usuário em específico",
+                "description": "Lista um usuário em específico",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id do usuário",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "Usuário não encontrado"
+                    },
+                    "200": {
+                        "description": "ok"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Restaurar um usuário",
+                "description": "Habilitar um usuário depois de excluido, somente administradores podem habilitar um usuario",
+                "operationId": "ca5b8d5d271a684e58a0dfd3a542a7d9",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "Id do usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Ok"
+                    },
+                    "404": {
+                        "description": "Usuario nao encontrado"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Deletar usuário",
+                "description": "Deletar usuário, administradores podem desabilitar um usuario e um usuario pode excluir sua conta",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "Id do usuario",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Ok"
+                    },
+                    "404": {
+                        "description": "Usuario nao encontrado"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        },
+        "/users/changePassword": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Alterar a senha",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "example": {
+                                    "old_password": "Senha antiga",
+                                    "new_password": "Nova senha"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Atualizado"
+                    },
+                    "422": {
+                        "description": "Erro na validação dos campos"
+                    },
+                    "500": {
+                        "description": "Error"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Autenticação",
+            "description": "Autenticação do sistema"
+        },
+        {
+            "name": "Users",
+            "description": "CRUD dos registros de usuários"
+        }
+    ]
+}
