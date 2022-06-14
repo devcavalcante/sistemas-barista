@@ -1,11 +1,7 @@
-
-
-
 /vendor/
 node_modules/
 npm-debug.log
 yarn-error.log
-/.idea
 
 # Laravel 4 specific
 bootstrap/compiled.php
@@ -19,12 +15,15 @@ public/hot
 public_html/storage
 public_html/hot
 
-storage/*.key
+storage/logs
 .env
 Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+./.idea
+.idea
 
 /resources/views/vendor
 /public/swagger-ui-assets
+/storage/logs

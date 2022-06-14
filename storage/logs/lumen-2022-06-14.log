@@ -8,3 +8,43 @@
 #5 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/artisan(35): Laravel\\Lumen\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #6 {main}
 "} 
+[2022-06-14 21:33:11] local.ERROR: The resource owner or authorization server denied the request. {"exception":"[object] (League\\OAuth2\\Server\\Exception\\OAuthServerException(code: 9): The resource owner or authorization server denied the request. at /var/www/vendor/league/oauth2-server/src/Exception/OAuthServerException.php:243)
+[stacktrace]
+#0 /var/www/vendor/league/oauth2-server/src/AuthorizationValidators/BearerTokenValidator.php(111): League\\OAuth2\\Server\\Exception\\OAuthServerException::accessDenied('Access token co...')
+#1 /var/www/vendor/league/oauth2-server/src/ResourceServer.php(84): League\\OAuth2\\Server\\AuthorizationValidators\\BearerTokenValidator->validateAuthorization(Object(Nyholm\\Psr7\\ServerRequest))
+#2 /var/www/vendor/laravel/passport/src/Guards/TokenGuard.php(205): League\\OAuth2\\Server\\ResourceServer->validateAuthenticatedRequest(Object(Nyholm\\Psr7\\ServerRequest))
+#3 /var/www/vendor/laravel/passport/src/Guards/TokenGuard.php(148): Laravel\\Passport\\Guards\\TokenGuard->getPsrRequestViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#4 /var/www/vendor/laravel/passport/src/Guards/TokenGuard.php(111): Laravel\\Passport\\Guards\\TokenGuard->authenticateViaBearerToken(Object(Laravel\\Lumen\\Http\\Request))
+#5 /var/www/vendor/laravel/passport/src/PassportServiceProvider.php(309): Laravel\\Passport\\Guards\\TokenGuard->user(Object(Laravel\\Lumen\\Http\\Request))
+#6 [internal function]: Laravel\\Passport\\PassportServiceProvider->Laravel\\Passport\\{closure}(Object(Laravel\\Lumen\\Http\\Request), NULL)
+#7 /var/www/vendor/laravel/framework/src/Illuminate/Auth/RequestGuard.php(58): call_user_func(Object(Closure), Object(Laravel\\Lumen\\Http\\Request), NULL)
+#8 /var/www/vendor/laravel/framework/src/Illuminate/Auth/GuardHelpers.php(60): Illuminate\\Auth\\RequestGuard->user()
+#9 /var/www/vendor/laravel/framework/src/Illuminate/Auth/GuardHelpers.php(70): Illuminate\\Auth\\RequestGuard->check()
+#10 /var/www/app/Http/Middleware/Authenticate.php(39): Illuminate\\Auth\\RequestGuard->guest()
+#11 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): App\\Http\\Middleware\\Authenticate->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure), 'api')
+#12 /var/www/vendor/laravel/lumen-framework/src/Routing/Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#13 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#14 /var/www/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(426): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#15 /var/www/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(263): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#16 /var/www/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(169): Laravel\\Lumen\\Application->handleFoundRoute(Array)
+#17 /var/www/vendor/laravel/lumen-framework/src/Routing/Pipeline.php(48): Laravel\\Lumen\\Application->Laravel\\Lumen\\Concerns\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#18 /var/www/app/Http/Middleware/Cors.php(25): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#19 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(167): App\\Http\\Middleware\\Cors->handle(Object(Laravel\\Lumen\\Http\\Request), Object(Closure))
+#20 /var/www/vendor/laravel/lumen-framework/src/Routing/Pipeline.php(30): Illuminate\\Pipeline\\Pipeline->Illuminate\\Pipeline\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#21 /var/www/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): Laravel\\Lumen\\Routing\\Pipeline->Laravel\\Lumen\\Routing\\{closure}(Object(Laravel\\Lumen\\Http\\Request))
+#22 /var/www/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(426): Illuminate\\Pipeline\\Pipeline->then(Object(Closure))
+#23 /var/www/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(175): Laravel\\Lumen\\Application->sendThroughPipeline(Array, Object(Closure))
+#24 /var/www/vendor/laravel/lumen-framework/src/Concerns/RoutesRequests.php(112): Laravel\\Lumen\\Application->dispatch(NULL)
+#25 /var/www/public/index.php(28): Laravel\\Lumen\\Application->run()
+#26 {main}
+"} 
+[2022-06-14 21:34:48] local.ERROR: There are no commands defined in the "vendor" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"vendor\" namespace. at /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/symfony/console/Application.php:648)
+[stacktrace]
+#0 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/symfony/console/Application.php(699): Symfony\\Component\\Console\\Application->findNamespace('vendor')
+#1 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('vendor:publish')
+#2 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/laravel/lumen-framework/src/Console/Kernel.php(116): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/artisan(35): Laravel\\Lumen\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 
