@@ -1,0 +1,10 @@
+[2022-06-14 21:24:00] local.ERROR: There are no commands defined in the "vendor" namespace. {"exception":"[object] (Symfony\\Component\\Console\\Exception\\NamespaceNotFoundException(code: 0): There are no commands defined in the \"vendor\" namespace. at /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/symfony/console/Application.php:648)
+[stacktrace]
+#0 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/symfony/console/Application.php(699): Symfony\\Component\\Console\\Application->findNamespace('vendor')
+#1 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/symfony/console/Application.php(259): Symfony\\Component\\Console\\Application->find('vendor:publish')
+#2 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/vendor/laravel/lumen-framework/src/Console/Kernel.php(116): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#5 /Users/debora.cavalcante/Documents/Projetos/sistemas-barista/artisan(35): Laravel\\Lumen\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 
